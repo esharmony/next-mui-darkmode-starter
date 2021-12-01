@@ -1,7 +1,9 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { Button } from '@mui/material';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import React from 'react';
+import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +16,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <Button variant="contained">Next Js</Button>
         </h1>
 
         <p className={styles.description}>
@@ -66,7 +68,7 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
