@@ -1,5 +1,5 @@
 import { PaletteMode } from '@mui/material';
-import { red, grey } from '@mui/material/colors';
+import { grey, green } from '@mui/material/colors';
 
 const GetDesignTokens = (mode: PaletteMode) => ({
   palette: {
@@ -7,8 +7,8 @@ const GetDesignTokens = (mode: PaletteMode) => ({
     ...(mode === 'light'
       ? {
           // palette values for light mode
-          primary: red,
-          default: red,
+          primary: green,
+          default: green,
           background: {
             default: '#f8f8f8',
           },
@@ -18,8 +18,8 @@ const GetDesignTokens = (mode: PaletteMode) => ({
         }
       : {
           // palette values for dark mode
-          primary: red,
-          default: red,
+          primary: grey,
+          default: green,
           background: {
             default: '#333',
           },

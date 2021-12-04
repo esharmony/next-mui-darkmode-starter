@@ -12,16 +12,6 @@ export const globalTypes = {
   },
 };
 
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-};
-
 import { ThemeProvider } from '@mui/material/styles';
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
 import { createTheme } from '@mui/material';
@@ -29,6 +19,27 @@ import GetDesignTokens from '../styles/theme';
 
 const withThemeProvider = (Story, context) => {
   const theme = createTheme(GetDesignTokens(context.globals.theme));
+  // below the storybook background is set to the theme background
+  document.body.style.backgroundColor = theme.palette.background.default;
+
+  // set background on docs
+  const targetNode = document.body;
+  const config = { childList: true, subtree: true };
+
+  const callback = function (mutationsList, observer) {
+    for (let mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        if (document.getElementsByClassName('docs-story')[0]) {
+          const docs = document.getElementsByClassName('docs-story')[0];
+          docs.firstChild.style.backgroundColor =
+            theme.palette.background.default;
+        }
+      }
+    }
+  };
+
+  const observer = new MutationObserver(callback);
+  observer.observe(targetNode, config); // end of setting background on docs
   return (
     <EmotionThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>
@@ -39,3 +50,13 @@ const withThemeProvider = (Story, context) => {
 };
 
 export const decorators = [withThemeProvider];
+
+export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+};

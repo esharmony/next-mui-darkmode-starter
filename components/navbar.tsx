@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ColorModeContext from '../contexts/colorModeContext';
 import { FormControlLabel, styled, Switch, useTheme } from '@mui/material';
-import DirectionsBoatIcon from '@mui/icons-material/DirectionsBoat';
+import House from '@mui/icons-material/House';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -30,7 +30,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     },
   },
   '& .MuiSwitch-thumb': {
-    backgroundColor: theme.palette.mode === 'dark' ? '#000' : '#fff',
+    backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#fff',
     width: 32,
     height: 32,
     '&:before': {
@@ -49,7 +49,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
   '& .MuiSwitch-track': {
     opacity: 1,
-    backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+    backgroundColor: theme.palette.mode === 'dark' ? '#333' : '#aab4be',
     borderRadius: 20 / 2,
   },
 }));
@@ -58,11 +58,16 @@ export default function NavBar() {
   const theme = useTheme();
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" enableColorOnDark elevation={0}>
+      <AppBar position="static" elevation={0}>
         <Toolbar variant="dense">
-          <DirectionsBoatIcon style={{ marginRight: 8 }} />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Redferry
+          <House style={{ marginRight: 8, color: 'white' }} />
+          <Typography
+            variant="h6"
+            color="white"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
+            Home of Lizards
           </Typography>
           <ColorModeContext.Consumer>
             {({ toggleColorMode }) => (

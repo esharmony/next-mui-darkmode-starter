@@ -1,17 +1,19 @@
 module.exports = {
   typescript: { reactDocgen: false },
-  stories: [
-    '../stories/**/*.stories.mdx',
-    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
-    '../components/**/*.stories.@(js|jsx|ts|tsx)',
-  ],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-actions',
+    'storybook-addon-themes',
   ],
   framework: '@storybook/react',
   core: {
     builder: 'webpack5',
   },
+
+  stories: [
+    '../components/**/*.stories.@(js|jsx|ts|tsx)',
+    '../pages-stories/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
 };
