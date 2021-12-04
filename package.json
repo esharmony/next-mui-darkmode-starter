@@ -1,5 +1,5 @@
 {
-  "name": "redferry",
+  "name": "next-mui-darkmode-starter",
   "private": true,
   "scripts": {
     "dev": "next dev",
