@@ -9,14 +9,9 @@ import { Grid } from '@mui/material';
 
 export default function Index() {
   return (
-    <Grid
-      container
-      alignItems="center"
-      justifyContent="center"
-      style={{ height: `100vh` }}
-    >
+    <Grid container alignItems="center" justifyContent="center">
       <Grid item>
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, marginTop: '10%' }}>
           <CardMedia
             component="img"
             height="140"

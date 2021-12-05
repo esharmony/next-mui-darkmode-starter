@@ -80,6 +80,7 @@ export default function NavBar() {
                   />
                 }
                 label=""
+                labelPlacement="start"
               />
             )}
           </ColorModeContext.Consumer>
