@@ -22,10 +22,9 @@ const withThemeProvider = (Story, context) => {
   // below the storybook background is set to the theme background
   document.body.style.backgroundColor = theme.palette.background.default;
 
-  // set background on docs
+  // set background on the storybook docs tab (this is done once the markup has been appended, I had to check for the occurance of this before changing the background, there maybe a better way )
   const targetNode = document.body;
   const config = { childList: true, subtree: true };
-
   const callback = function (mutationsList, observer) {
     for (let mutation of mutationsList) {
       if (mutation.type === 'childList') {
@@ -37,9 +36,9 @@ const withThemeProvider = (Story, context) => {
       }
     }
   };
-
   const observer = new MutationObserver(callback);
   observer.observe(targetNode, config); // end of setting background on docs
+
   return (
     <EmotionThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>

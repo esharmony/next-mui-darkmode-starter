@@ -5,7 +5,6 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-actions',
-    'storybook-addon-themes',
   ],
   framework: '@storybook/react',
   core: {
