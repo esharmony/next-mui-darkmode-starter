@@ -33,7 +33,7 @@ exports[`Storyshots Components/NavBar Navbar 1`] = `
         Home of Lizards
       </div>
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementStart css-1f2kvjf-MuiFormControlLabel-root"
       >
         <span
           className="MuiSwitch-root MuiSwitch-sizeMedium css-k00jmx-MuiSwitch-root"
@@ -82,17 +82,12 @@ exports[`Storyshots Components/NavBar Navbar 1`] = `
 exports[`Storyshots Pages/Index Page 1`] = `
 <div
   className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-go2vvz-MuiGrid-root"
-  style={
-    Object {
-      "height": "100vh",
-    }
-  }
 >
   <div
     className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
   >
     <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1nt32fa-MuiPaper-root-MuiCard-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-rzaarn-MuiPaper-root-MuiCard-root"
     >
       <img
         alt="green iguana"
