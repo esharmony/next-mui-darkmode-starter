@@ -16,8 +16,11 @@ interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
+type loaded = 'block' | 'none';
+
 const App = (props: MyAppProps) => {
   const [mode, setMode] = React.useState<PaletteMode>('light');
+  const [loaded, setLoaded] = React.useState<loaded>('none');
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -51,12 +54,13 @@ const App = (props: MyAppProps) => {
 
   useEffect(() => {
     const colorSetting = localStorage.getItem('RF_COLOR_SETTING');
-    console.log('should set');
     if (colorSetting) setMode(colorSetting as PaletteMode);
+    setLoaded('block');
   }, []);
 
   const theme = React.useMemo(() => createTheme(GetDesignTokens(mode)), [mode]);
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -66,7 +70,7 @@ const App = (props: MyAppProps) => {
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout>
+          <Layout loaded={loaded}>
             <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
