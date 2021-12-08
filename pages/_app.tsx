@@ -41,23 +41,23 @@ const App = (props: MyAppProps) => {
 
   const useIsomorphicLayoutEffect = canUseDOM ? useLayoutEffect : useEffect;
 
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (prefersDarkMode && !!cookies.cookieColorMode !== true) {
       setMode('dark');
     } else {
       const colorSetting = cookies.cookieColorMode;
       if (colorSetting) setMode(colorSetting as PaletteMode);
     }
-  }, [prefersDarkMode]);
+  }, [prefersDarkMode, cookies.cookieColorMode]);
 
   const firstUpdate = useRef(true);
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
     }
     setCookie('cookieColorMode', mode);
-  }, [mode]);
+  }, [mode, setCookie]);
 
   const theme = React.useMemo(() => createTheme(GetDesignTokens(mode)), [mode]);
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
