@@ -10,7 +10,6 @@ import GetDesignTokens from '../styles/theme';
 import Layout from '../components/layout';
 import ColorModeContext from '../contexts/colorModeContext';
 import { useCookies, CookiesProvider, Cookies } from 'react-cookie';
-import { parseCookies } from '../helpers/';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -45,6 +44,9 @@ const App = (props: MyAppProps) => {
   useIsomorphicLayoutEffect(() => {
     if (prefersDarkMode && !!cookies.cookieColorMode !== true) {
       setMode('dark');
+    } else {
+      const colorSetting = cookies.cookieColorMode;
+      if (colorSetting) setMode(colorSetting as PaletteMode);
     }
   }, [prefersDarkMode]);
 
@@ -57,11 +59,6 @@ const App = (props: MyAppProps) => {
     setCookie('cookieColorMode', mode);
   }, [mode]);
 
-  useIsomorphicLayoutEffect(() => {
-    const colorSetting = cookies.cookieColorMode;
-    if (colorSetting) setMode(colorSetting as PaletteMode);
-  }, []);
-
   const theme = React.useMemo(() => createTheme(GetDesignTokens(mode)), [mode]);
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const isBrowser = typeof window !== 'undefined';
@@ -70,8 +67,6 @@ const App = (props: MyAppProps) => {
       <Head>
         <title>{props.color}</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <meta name="description" content="the best description" />
-        <meta name="theme-color" content={theme.palette.primary.main} />
       </Head>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
@@ -90,14 +85,3 @@ const App = (props: MyAppProps) => {
 };
 
 export default App;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-App.getInitialProps = async ({ ctx }: any) => {
-  let color;
-  if (ctx.req && ctx.req.headers.cookie) {
-    color = parseCookies(ctx.req).cookieColorMode;
-  }
-  return {
-    color,
-  };
-};
