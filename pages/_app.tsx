@@ -16,11 +16,11 @@ interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
-type loaded = 'block' | 'none';
+type themeLoaded = 'block' | 'none';
 
 const App = (props: MyAppProps) => {
   const [mode, setMode] = React.useState<PaletteMode>('light');
-  const [loaded, setLoaded] = React.useState<loaded>('none');
+  const [themeLoaded, setThemeLoaded] = React.useState<themeLoaded>('none');
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -55,7 +55,9 @@ const App = (props: MyAppProps) => {
   useEffect(() => {
     const colorSetting = localStorage.getItem('RF_COLOR_SETTING');
     if (colorSetting) setMode(colorSetting as PaletteMode);
-    setLoaded('block');
+    // this is a nasty hack to get round the dark theme flashing issue
+    // if you have a better way please do tell
+    setThemeLoaded('block');
   }, []);
 
   const theme = React.useMemo(() => createTheme(GetDesignTokens(mode)), [mode]);
@@ -70,7 +72,7 @@ const App = (props: MyAppProps) => {
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout loaded={loaded}>
+          <Layout loaded={themeLoaded}>
             <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
