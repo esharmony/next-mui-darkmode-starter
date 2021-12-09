@@ -92,11 +92,11 @@ const App = (props: MyAppProps) => {
 
 export default App;
 
-App.getInitialProps = async (ctx: NextPageContext) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+App.getInitialProps = async ({ ctx }: any) => {
   let themeSetting;
   if (ctx.req && ctx.req.headers.cookie) {
-    const { req } = ctx;
-    themeSetting = parseCookies(req).cookieColorMode;
+    themeSetting = parseCookies(ctx.req).cookieColorMode;
   }
   return {
     themeSetting,
