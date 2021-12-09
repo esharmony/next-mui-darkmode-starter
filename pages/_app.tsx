@@ -11,7 +11,6 @@ import Layout from '../components/layout';
 import ColorModeContext from '../contexts/colorModeContext';
 import { parseCookies } from '../helpers';
 import { Cookies, CookiesProvider, useCookies } from 'react-cookie';
-import { NextPageContext } from 'next';
 
 const clientSideEmotionCache = createEmotionCache();
 
