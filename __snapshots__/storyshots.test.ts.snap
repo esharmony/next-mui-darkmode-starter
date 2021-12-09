@@ -5,7 +5,7 @@ exports[`Storyshots Components/NavBar Navbar 1`] = `
   className="MuiBox-root css-i9gxme"
 >
   <header
-    className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-zc22e0-MuiPaper-root-MuiAppBar-root"
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-1n86us7-MuiPaper-root-MuiAppBar-root"
   >
     <div
       className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-10ltm04-MuiToolbar-root"
@@ -39,7 +39,7 @@ exports[`Storyshots Components/NavBar Navbar 1`] = `
           className="MuiSwitch-root MuiSwitch-sizeMedium css-k00jmx-MuiSwitch-root"
         >
           <span
-            className="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-ja737g-MuiButtonBase-root-MuiSwitch-switchBase"
+            className="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-1kcjepe-MuiButtonBase-root-MuiSwitch-switchBase"
             onBlur={[Function]}
             onContextMenu={[Function]}
             onDragLeave={[Function]}
@@ -87,7 +87,7 @@ exports[`Storyshots Pages/Index Page 1`] = `
     className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
   >
     <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-rzaarn-MuiPaper-root-MuiCard-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-q3dmvn-MuiPaper-root-MuiCard-root"
     >
       <img
         alt="green iguana"
@@ -113,7 +113,7 @@ exports[`Storyshots Pages/Index Page 1`] = `
         className="MuiCardActions-root MuiCardActions-spacing css-1t6e9jv-MuiCardActions-root"
       >
         <button
-          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButtonBase-root css-16iravp-MuiButtonBase-root-MuiButton-root"
+          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButtonBase-root css-npq4pt-MuiButtonBase-root-MuiButton-root"
           disabled={false}
           onBlur={[Function]}
           onContextMenu={[Function]}
@@ -133,7 +133,7 @@ exports[`Storyshots Pages/Index Page 1`] = `
           Share
         </button>
         <button
-          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButtonBase-root css-16iravp-MuiButtonBase-root-MuiButton-root"
+          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButtonBase-root css-npq4pt-MuiButtonBase-root-MuiButton-root"
           disabled={false}
           onBlur={[Function]}
           onContextMenu={[Function]}
