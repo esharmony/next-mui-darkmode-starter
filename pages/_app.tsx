@@ -9,16 +9,20 @@ import { createTheme, PaletteMode, useMediaQuery } from '@mui/material';
 import GetDesignTokens from '../styles/theme';
 import Layout from '../components/layout';
 import ColorModeContext from '../contexts/colorModeContext';
+import { parseCookies } from '../helpers';
+import { Cookies, CookiesProvider, useCookies } from 'react-cookie';
 
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
+  themeSetting: PaletteMode;
 }
 
 const App = (props: MyAppProps) => {
-  const [mode, setMode] = React.useState<PaletteMode>('light');
-  const [themeLoaded, setThemeLoaded] = React.useState<boolean>(false);
+  const [mode, setMode] = React.useState<PaletteMode>(
+    props.themeSetting || "light'"
+  );
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -29,17 +33,15 @@ const App = (props: MyAppProps) => {
     }),
     []
   );
-
+  const [cookies, setCookie] = useCookies(['cookieColorMode']);
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const isBrowser = typeof window !== 'undefined';
 
   useEffect(() => {
-    if (
-      prefersDarkMode &&
-      !!localStorage.getItem('RF_COLOR_SETTING') !== true
-    ) {
+    if (prefersDarkMode && !!cookies.cookieColorMode !== true) {
       setMode('dark');
     }
-  }, [prefersDarkMode]);
+  }, [prefersDarkMode, cookies.cookieColorMode]);
 
   const firstUpdate = useRef(true);
   useEffect(() => {
@@ -47,30 +49,32 @@ const App = (props: MyAppProps) => {
       firstUpdate.current = false;
       return;
     }
-    localStorage.setItem('RF_COLOR_SETTING', mode);
-  }, [mode]);
+
+    setCookie('cookieColorMode', mode);
+  }, [mode, setCookie]);
 
   useEffect(() => {
-    const colorSetting = localStorage.getItem('RF_COLOR_SETTING');
+    const colorSetting = cookies.cookieColorMode;
     if (colorSetting) setMode(colorSetting as PaletteMode);
-    // this is a nasty hack to get round the dark theme flashing issue
-    // if you have a better way please do tell
-    setThemeLoaded(true);
-  }, []);
+  }, [cookies.cookieColorMode]);
 
   const theme = React.useMemo(() => createTheme(GetDesignTokens(mode)), [mode]);
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>My page</title>
+        <title>Home of Lizards</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout loaded={themeLoaded} theme={theme}>
-            <Component {...pageProps} />
+          <Layout>
+            <CookiesProvider
+              cookies={isBrowser ? undefined : new Cookies(cookies)}
+            >
+              <Component {...pageProps} />
+            </CookiesProvider>
           </Layout>
         </ThemeProvider>
       </ColorModeContext.Provider>
@@ -79,3 +83,14 @@ const App = (props: MyAppProps) => {
 };
 
 export default App;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+App.getInitialProps = async ({ ctx }: any) => {
+  let themeSetting;
+  if (ctx.req && ctx.req.headers.cookie) {
+    themeSetting = parseCookies(ctx.req).cookieColorMode;
+  }
+  return {
+    themeSetting,
+  };
+};

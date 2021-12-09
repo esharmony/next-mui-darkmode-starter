@@ -6,14 +6,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
-import Head from 'next/head';
 
 export default function Index() {
   return (
     <>
-      <Head>
-        <title>test</title>
-      </Head>
       <Grid container alignItems="center" justifyContent="center">
         <Grid item>
           <Card sx={{ maxWidth: 345, marginTop: '10%' }}>
