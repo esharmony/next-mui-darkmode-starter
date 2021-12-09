@@ -21,7 +21,7 @@ interface MyAppProps extends AppProps {
 
 const App = (props: MyAppProps) => {
   const [mode, setMode] = React.useState<PaletteMode>(
-    props.themeSetting || "light'"
+    props.themeSetting || 'light'
   );
   const colorMode = React.useMemo(
     () => ({
@@ -37,6 +37,12 @@ const App = (props: MyAppProps) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const isBrowser = typeof window !== 'undefined';
 
+  const addDays = (date: Date, days: number) => {
+    const copy = new Date(Number(date));
+    copy.setDate(date.getDate() + days);
+    return copy;
+  };
+
   useEffect(() => {
     if (prefersDarkMode && !!cookies.cookieColorMode !== true) {
       setMode('dark');
@@ -49,8 +55,9 @@ const App = (props: MyAppProps) => {
       firstUpdate.current = false;
       return;
     }
-
-    setCookie('cookieColorMode', mode);
+    const date = new Date();
+    const expires = addDays(date, 365);
+    setCookie('cookieColorMode', mode, { path: '/', expires, secure: true });
   }, [mode, setCookie]);
 
   useEffect(() => {
