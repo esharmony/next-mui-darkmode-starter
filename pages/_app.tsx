@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
-import { AppProps } from 'next/app';
+import { AppContext, AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
@@ -91,11 +91,10 @@ const App = (props: MyAppProps) => {
 
 export default App;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-App.getInitialProps = async ({ ctx }: any) => {
+App.getInitialProps = async ({ ctx }: AppContext) => {
   let themeSetting;
   if (ctx.req && ctx.req.headers.cookie) {
-    themeSetting = parseCookies(ctx.req).cookieColorMode;
+    themeSetting = parseCookies(ctx).cookieColorMode;
   }
   return {
     themeSetting,

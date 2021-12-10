@@ -1,6 +1,6 @@
 import cookie from 'cookie';
+import { NextPageContext } from 'next';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function parseCookies(req: any) {
+export function parseCookies({ req }: NextPageContext) {
   return cookie.parse(req ? req.headers.cookie || '' : document.cookie);
 }
