@@ -11,7 +11,6 @@ import Layout from '../components/layout';
 import ColorModeContext from '../contexts/colorModeContext';
 import { parseCookies } from '../helpers';
 import { Cookies, CookiesProvider, useCookies } from 'react-cookie';
-import { NextPageContext } from 'next';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -92,10 +91,11 @@ const App = (props: MyAppProps) => {
 
 export default App;
 
-App.getInitialProps = async ({ req }: NextPageContext) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+App.getInitialProps = async ({ ctx }: any) => {
   let themeSetting;
-  if (req && req.headers.cookie) {
-    themeSetting = parseCookies(req).cookieColorMode;
+  if (ctx.req && ctx.req.headers.cookie) {
+    themeSetting = parseCookies(ctx.req).cookieColorMode;
   }
   return {
     themeSetting,
