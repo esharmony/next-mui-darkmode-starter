@@ -8,7 +8,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 you can read a blog post here about [how I set the dark mode up in Storybook](https://www.sabbaticaldev.co.uk/post/configure-dark-mode-in-storybook-with-mui-5-and-nextjs)
 
-Some of the configuarations for this project, for prettier and husky etc was written following [this post](https://paulintrognon.fr/blog/typescript-prettier-eslint-next-js) by Paulin Trognon
+Some of the configurations for this project, for prettier and husky etc was written following [this post](https://paulintrognon.fr/blog/typescript-prettier-eslint-next-js) by Paulin Trognon
 
 ### The application is set up with the following features.
 
