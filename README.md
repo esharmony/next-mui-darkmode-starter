@@ -1,20 +1,21 @@
 
-### Next.js MUI 5 Dark Mode Theme Starter Repository
+## Next.js MUI 5 Dark Mode Theme Starter Repository
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 You can see a running version [here](https://next-mui-darkmode-starter.vercel.app/) 
+You can see the running storybook [here](https://61aca31959c236004a9851ba-emcwgcpgzl.chromatic.com/) 
 
-Some of the configuarations for this project, for prettier and husky was written following [this post](https://paulintrognon.fr/blog/typescript-prettier-eslint-next-js) by Paulin Trognon
+Some of the configuarations for this project, for prettier and husky etc was written following [this post](https://paulintrognon.fr/blog/typescript-prettier-eslint-next-js) by Paulin Trognon
 
-The application is set up the following features.
+### The application is set up the following features.
 
-Next.js with Typescript 
-Dark theme with Material UI 5
-Storybook with dark theme available globally from the Storybook toolbar
-Storys will have dark theme applied with no extra configuration needed.
-Storyshots (snapshots automatically generated from storybook stories) configured
-Jest configured
+- Next.js with Typescript 
+- Dark theme with Material UI 5
+- Storybook with dark theme available globally from the Storybook toolbar
+- Storys will have dark theme applied with no extra configuration needed.
+- Storyshots (snapshots automatically generated from storybook stories) configured
+- Jest configured
 
 ## Getting Started
 
