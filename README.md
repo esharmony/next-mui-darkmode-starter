@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 You can see a running version [here](https://next-mui-darkmode-starter.vercel.app/) 
 
-The base of this project was written following [this post](https://paulintrognon.fr/blog/typescript-prettier-eslint-next-js) by Paulin Trognon
+Some of the configuarations for this project, for prettier and husky was written following [this post](https://paulintrognon.fr/blog/typescript-prettier-eslint-next-js) by Paulin Trognon
 
 The application is set up the following features.
 
